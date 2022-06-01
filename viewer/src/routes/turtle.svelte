@@ -1,6 +1,7 @@
 <script>
 	// @ts-nocheck
 	import { onMount } from 'svelte'
+	import { page } from '$app/stores'
 
 	import { canvasTurtle as turtle, allowedStrings } from '$lib/turtle.js'
 
@@ -9,9 +10,9 @@
 	let canvas
 	let c
 
-	$: path = 'FFF-FF-F-F+F+FF-F-FFF'
-	$: δ = 90
-	$: d = 20
+	$: path = $page.url.searchParams.get('path') || 'FFF-FF-F-F+F+FF-F-FFF'
+	$: δ = $page.url.searchParams.get('delta') || 90
+	$: d = $page.url.searchParams.get('distance') || 20
 	$: doClear = false
 
 	// 'F-F-F+F+F' // -F-F+F+F+F+f-F'
