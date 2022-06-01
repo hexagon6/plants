@@ -1,6 +1,6 @@
 <nav>
 	<a href="/">Home</a>
-	<a href="/turtle">Turtle Playground</a>
+	<a href="/turtle/eyJwYXRoIjoiRkZGLUZGLUYtRitGK0ZGLUYtRkZGIiwiZGVsdGEiOjkwLCJkaXN0YW5jZSI6MjB9">Turtle Playground</a>
 	<a href="/axial-tree">Axial tree</a>
 	<a href="/about">About</a>
 </nav>
