@@ -10,9 +10,12 @@
 	let canvas
 	let c
 
-	$: path = $page.url.searchParams.get('path') || 'FFF-FF-F-F+F+FF-F-FFF'
-	$: δ = $page.url.searchParams.get('delta') || 90
-	$: d = $page.url.searchParams.get('distance') || 20
+	const initialPath = decodeURI($page.url.searchParams.get('path')) || 'FFF-FF-F-F+F+FF-F-FFF'
+	const initialDelta = $page.url.searchParams.get('delta') || 90
+	const initialDistance = $page.url.searchParams.get('distance') || 20
+	$: path = initialPath
+	$: δ = initialDelta
+	$: d = initialDistance
 	$: doClear = false
 
 	// 'F-F-F+F+F' // -F-F+F+F+F+f-F'
