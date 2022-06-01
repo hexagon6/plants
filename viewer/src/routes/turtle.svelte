@@ -16,7 +16,7 @@
 	$: path = initialPath
 	$: δ = initialDelta
 	$: d = initialDistance
-	$: doClear = false
+	$: doClear = true
 
 	// 'F-F-F+F+F' // -F-F+F+F+F+f-F'
 	onMount(async () => {
