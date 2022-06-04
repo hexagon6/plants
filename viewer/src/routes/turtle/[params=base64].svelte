@@ -75,10 +75,10 @@
 		</label>
 	</li>
 </ul>
-<diV>
+<div>
 	current settings:
 	<a href="/turtle/{toBase64JSON({ path, delta: δ, distance: d })}">Share this link</a>
-</diV>
+</div>
 <div>
 	presets:
 	<a href="/turtle/{toBase64JSON({ path: TurtleTest, delta: 90, distance: 20 })}">Turtle Test</a>
