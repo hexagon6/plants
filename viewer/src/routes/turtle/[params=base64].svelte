@@ -11,7 +11,7 @@
 	// @ts-nocheck
 	import { onMount } from 'svelte'
 
-	import { canvasTurtle as turtle, allowedStrings } from '$lib/turtle.js'
+	import { canvasTurtle as turtle, svgTurtle, allowedStrings } from '$lib/turtle.js'
 
 	const toBase64JSON = o => Buffer.from(JSON.stringify(o)).toString('base64')
 
@@ -49,6 +49,23 @@
 	<div>
 		<legend>Canvas Renderer: </legend>
 		<canvas bind:this={canvas} {width} {height} />
+	</div>
+
+	<div style="height: {height}px; width: {width}px;">
+		<legend>SVG Renderer: </legend>
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width="100%"
+			height="100%"
+			viewBox="0 0 {width} {height}"
+		>
+			<circle cx={height / 2} cy={width / 2} r="2" fill="brown" />
+			<path
+				fill="transparent"
+				stroke="lightgreen"
+				d={svgTurtle({ X: canvas?.width, Y: canvas?.height })({ δ, d, doClear })(path)}
+			/>
+		</svg>
 	</div>
 </article>
 
