@@ -12,14 +12,9 @@
 	import { onMount } from 'svelte'
 
 	import { canvasTurtle as turtle, svgTurtle, allowedStrings } from '$lib/turtle.js'
+	import {KochKurve, TurtleTest, Sierpinski} from '$lib/renderpaths.js'
 
 	const toBase64JSON = o => Buffer.from(JSON.stringify(o)).toString('base64')
-
-	let KochSegment = 'F-F+F+FF-F-F+F'
-	let KochKurve = [KochSegment, KochSegment, KochSegment, KochSegment].join('-')
-	let TurtleTest = 'FFF-FF-F-F+F+FF-F-FFF'
-	let Sierpinski =
-		'F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F++++F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F++++F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F'
 
 	// [[SL,SR,SL].join('-'), [SR,SL,SR].join('+'), [SL,SR,SL].join('-')].join('-')
 	let width = 400
