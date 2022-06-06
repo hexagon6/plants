@@ -11,7 +11,7 @@ from brownie import *
 class DisplaySVG(QtWidgets.QWidget):
     def __init__(self, parent=None, svg=""):
         super().__init__(parent)
-        self.resize(450, 450)
+        self.resize(1000, 1000)
         self.verticalLayout = QtWidgets.QVBoxLayout(self)
         self.webview = QWebEngineView(self)
         self.verticalLayout.addWidget(self.webview)
@@ -47,11 +47,11 @@ def main():
 
     # Render image, toggle color, then render image again
 
-    html = data2svg(c.tokenURI(1))
-    print(c.tokenURI(1))
+    #html = data2svg(c.tokenURI(1))
+    #print(c.tokenURI(1))
     c.toggle()
     print(c.tokenURI(1))
-    #html += data2svg(c.tokenURI(1))
+    html = data2svg(c.tokenURI(1))
 
     # Print the SVGs
     print("\n\n")
