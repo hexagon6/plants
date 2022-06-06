@@ -30,6 +30,7 @@
 	"dependencies": {
 		"@openfonts/libre-baskerville_latin": "^1.44.2",
 		"buffer": "^6.0.3",
+		"lindenmayer": "^1.5.4",
 		"ramda": "^0.28.0"
 	}
 }
