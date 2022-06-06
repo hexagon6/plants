@@ -18,13 +18,25 @@ export const canvasTurtle =
 		// starting circle
 		c.fillStyle = 'brown'
 		c.beginPath()
-		c.arc(center.X, center.Y, 2, 0, Math.PI * 2, true)
+		c.arc(center.X, Y, 2, 0, Math.PI * 2, true)
 		c.fill()
 		c.strokeStyle = 'lightgreen'
 		let direction = 0 /* 0 = North, 90 = East, 180 = South, 270 = West */
 		let xPos = center.X
-		let yPos = center.Y
+		let yPos = Y
+		let stack = [] // [{xPos, yPos, direction}]
 		const actions = {
+			'[': () => {
+				console.log('push to stack')
+				stack.push({ xPos, yPos, direction })
+			},
+			']': () => {
+				console.log('pop the stack')
+				const { xPos: _x, yPos: _y, direction: _dir } = stack.pop({ xPos, yPos, direction })
+				xPos = _x
+				yPos = _y
+				direction = _dir
+			},
 			F: () => {
 				// console.log(`move forward 1 step with length d ${d} while drawing a line segment`)
 
@@ -73,21 +85,35 @@ export const svgTurtle =
 		}
 		let direction = 0 /* 0 = North, 90 = East, 180 = South, 270 = West */
 		let xPos = center.X
-		let yPos = center.Y
+		let yPos = Y
+		let stack = [] // [{xPos, yPos, direction}]
 		const actions = {
+			'[': () => {
+				console.log('push to stack')
+				stack.push({ xPos, yPos, direction })
+				return `M ${xPos} ${yPos}`
+			},
+			']': () => {
+				console.log('pop the stack')
+				const { xPos: _x, yPos: _y, direction: _dir } = stack.pop()
+				xPos = _x
+				yPos = _y
+				direction = _dir
+				return `M ${xPos} ${yPos}`
+			},
 			F: () => {
 				// console.log(`move forward 1 step with length d ${d} while drawing a line segment`)
 				const V = (direction / 360) * 2 * Math.PI
-				const x = d * Math.sin(V)
-				const y = -d * Math.cos(V)
-				return `l ${x} ${y}`
+				xPos = xPos + d * Math.sin(V)
+				yPos = yPos - d * Math.cos(V)
+				return `L ${xPos} ${yPos}`
 			},
 			f: () => {
 				const V = (direction / 180) * Math.PI
-				const x = d * Math.sin(V)
-				const y = -d * Math.cos(V)
+				xPos = xPos + d * Math.sin(V)
+				yPos = yPos - d * Math.cos(V)
 				console.log(`move forward 1 step with length d ${d} without drawing`)
-				return `m ${x} ${y}`
+				return `M ${xPos} ${yPos}`
 			},
 			'-': () => {
 				direction = (direction + δ) % 360
@@ -110,7 +136,7 @@ export const svgTurtle =
 			),
 			filter(f => f !== ''),
 		)(input.split('')).join(' ')
-		return `M ${center.X},${center.Y}
+		return `M ${center.X},${Y}
 		${path}`
 	}
 

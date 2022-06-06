@@ -54,7 +54,7 @@
 			height="100%"
 			viewBox="0 0 {width} {height}"
 		>
-			<circle cx={height / 2} cy={width / 2} r="2" fill="brown" />
+			<circle cx={width/ 2} cy={height} r="2" fill="brown" />
 			<path
 				fill="transparent"
 				stroke="lightgreen"
