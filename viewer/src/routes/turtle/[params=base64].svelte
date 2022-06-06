@@ -45,7 +45,13 @@
 	<title>Turtle Playground</title>
 </svelte:head>
 
-<canvas bind:this={canvas} {width} {height} />
+<article>
+	<div>
+		<legend>Canvas Renderer: </legend>
+		<canvas bind:this={canvas} {width} {height} />
+	</div>
+</article>
+
 <ul>
 	<li>
 		actions:
@@ -91,7 +97,18 @@
 		text-align: center;
 		margin: 0em auto 1em auto;
 	} */
-	canvas {
+	article {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+	}
+
+	article > * {
+		margin: 1em;
+	}
+
+	canvas,
+	svg {
 		background-color: rgb(42, 166, 238);
 		box-shadow: 0.2em 0.2em 4em lightblue, -0.2em -0.2em 4em lightgreen;
 		margin: 2em auto;
