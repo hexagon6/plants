@@ -2,10 +2,14 @@
 	// @ts-nocheck
 
 	import LSystem from 'lindenmayer'
-	import { fromPairs, map } from 'ramda'
-	$: iterations = 0
-	$: axiom = 'F-F-F-F'
-	let productions = { F: () => 'F-F+F+FF-F-F+F' }
+	import { tree1, koch } from '$lib/l-systems.js'
+
+	const examples = [tree1, koch]
+
+	$: id = 0
+	$: iterations = 1
+	$: axiom = examples[id].axiom
+	$: productions = examples[id].productions
 
 	$: lsystem = new LSystem({
 		axiom,
@@ -18,6 +22,11 @@
 </script>
 
 <div>L-System</div>
+<select bind:value={id}>
+	{#each examples as e}
+		<option value={e.id}>{e.name}</option>
+	{/each}
+</select>
 <div>
 	<input bind:value={axiom} type="textarea" width="100%" />
 </div>
