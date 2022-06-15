@@ -45,10 +45,11 @@ def main():
     # CS = CosSin.deploy({'from': me})
     # c = SVG.deploy(CS.address,{'from': me})
     c = SVG.deploy({'from': me})
-    c.mint("F+F-f+F+FF+F-F+Ff+FFf+F",90)
-    c.mint("FFF-FF-F-F+F+FF-F-FFF",90)
-    c.mint("F-F+F+FF-F-F+F-F-F+F+FF-F-F+F-F-F+F+FF-F-F+F-F-F+F+FF-F-F+F",90)
-    c.mint("F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F++++F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F++++F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F",60)
+    c.mint("F+F-f+F+FF+F-F+Ff+FFf+F",90,"red")
+    c.mint("FFF-FF-F-F+F+FF-F-FFF",90,"green")
+    c.mint("F-F+F+FF-F-F+F-F-F+F+FF-F-F+F-F-F+F+FF-F-F+F-F-F+F+FF-F-F+F",90,"blue")
+    c.mint("F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F++++F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F++++F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F",60,"#FF9933")
+    c.mint("FfF+F+F+F+F+FFfF+F+F+F+F+FFfF+F+F+F+F+FFfF+F+F+F+F+FFfF+F+F+F+F+FFfF+F+F+F+F+F",60,"black")
 
 
     # Render image, toggle color, then render image again
@@ -61,6 +62,8 @@ def main():
     html += data2svg(c.tokenURI(1))
     html += data2svg(c.tokenURI(2))
     html += data2svg(c.tokenURI(3))
+    html += data2svg(c.tokenURI(4))
+
 
 
     # Print the SVGs

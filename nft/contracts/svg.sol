@@ -14,20 +14,27 @@ contract SVG is ERC721Tradable , CosSin {
 
     string img_name = "On-Chain SVG";
 
-    mapping (uint => bytes) index2path;
-    mapping (uint => uint) index2delta;
-    mapping (uint => uint[]) index2degree;
+
+    struct Setting {
+      mapping (uint => bytes) index2path;
+      mapping (uint => uint) index2delta;
+      mapping (uint => uint[]) index2degree;
+      mapping (uint => string) index2color;
+    }
+
+    Setting setting;
 
     constructor() ERC721Tradable("Test","TT",msg.sender) {
     }
 
 
 
-    function mint(string memory _path, uint _delta) public {
+    function mint(string memory _path, uint _delta, string memory _color) public {
         _safeMint(msg.sender, counter);
         _index2degree(_path,_delta, counter);
-        index2path[counter] = bytes(_path);
-        index2delta[counter] = _delta;
+        setting.index2path[counter] = bytes(_path);
+        setting.index2delta[counter] = _delta;
+        setting.index2color[counter] = _color;
         counter++;
     }
 
@@ -36,9 +43,10 @@ contract SVG is ERC721Tradable , CosSin {
     }
 
 
-    function showInitialValue(uint _tokenId) external returns (bytes memory path, uint delta){
-      path = index2path[_tokenId];
-      delta = index2delta[_tokenId];
+    function showInitialValue(uint _tokenId) external view returns (bytes memory path, uint delta, string memory color){
+      path = setting.index2path[_tokenId];
+      delta = setting.index2delta[_tokenId];
+      color = setting.index2color[_tokenId];
     }
 
 
@@ -60,7 +68,7 @@ contract SVG is ERC721Tradable , CosSin {
             degree -= _delta;
           }
         }
-        index2degree[_tokenId].push(degree);
+        setting.index2degree[_tokenId].push(degree);
     }
   }
 
@@ -72,6 +80,10 @@ contract SVG is ERC721Tradable , CosSin {
     uint cY;
     uint maxY;
     uint minY;
+    uint x;
+    uint y;
+    bool bx;
+    bool by;
   }
 
     function createSVG(uint tokenId) view public returns (bytes memory svg) {
@@ -81,51 +93,38 @@ contract SVG is ERC721Tradable , CosSin {
       // f move
       // + degree
       // - degree
-      bytes memory path = index2path[tokenId]; //new bytes(bytes(string).length);
-      uint degree = 0;
-      uint x;
-      uint y;
-      bool bx = true;
-      bool by = true;
+
 
       Pos memory _pos;
-      _pos = Pos(10000,10000,10000,10000,10000,10000);
+      _pos = Pos(10000,10000,10000,10000,10000,10000,0,0,true,true);
 
 
         bytes memory svgImage;
 
 
-        for(uint i = 0; i<path.length; i++) {
-          if (true) {
-
-
-            (bx, x) = sin(index2degree[tokenId][i]); // x = d*sin(degree)
-            (by, y) = cos(index2degree[tokenId][i]); // y = -d*cos(degree)
-            if(by == true) {
-              by = false;
+        for(uint i = 0; i<setting.index2path[tokenId].length; i++) {
+            (_pos.bx, _pos.x) = sin(setting.index2degree[tokenId][i]); // x = d*sin(degree)
+            (_pos.by, _pos.y) = cos(setting.index2degree[tokenId][i]); // y = -d*cos(degree)
+            if(_pos.by == true) {
+              _pos.by = false;
             } else {
-              by = true;
+              _pos.by = true;
             }
-            if(bx == true) {
-              bx = false;
+            if(_pos.bx == true) {
+              _pos.bx = false;
             } else {
-              bx = true;
+              _pos.bx = true;
             }
 
-
-            // Do better rounding
-            // x = (100*x)/n;
-            // y = (100*y)/n;
-
-            if ((( (1000*x)/n - (100*x)/n)*10) >= 5) {
-              x = (100*x)/n+1;
+            if ((( (1000*_pos.x)/n - (100*_pos.x)/n)*10) >= 5) {
+              _pos.x = (100*_pos.x)/n+1;
             }else {
-              x = (100*x)/n;
+              _pos.x = (100*_pos.x)/n;
             }
-            if ((( (1000*y)/n - (100*y)/n)*10) >= 5) {
-              y = (100*y)/n+1;
+            if ((( (1000*_pos.y)/n - (100*_pos.y)/n)*10) >= 5) {
+              _pos.y = (100*_pos.y)/n+1;
             } else {
-              y = (100*y)/n;
+              _pos.y = (100*_pos.y)/n;
             }
 
 
@@ -134,51 +133,51 @@ contract SVG is ERC721Tradable , CosSin {
 
 
 
-            if (bx==true && by == true) {
-              if ( (keccak256(abi.encodePacked('F')))==keccak256(abi.encodePacked(path[i]))) {
-                svgImage = abi.encodePacked(svgImage,' l ',Strings.toString(x),', ',Strings.toString(y));
-                _pos.cX+=x;
-                _pos.cY+=y;
-              } else if ( (keccak256(abi.encodePacked('f')))==keccak256(abi.encodePacked(path[i]))) {
-                svgImage = abi.encodePacked(svgImage,' m ',Strings.toString(x),', ',Strings.toString(y));
-                _pos.cX+=x;
-                _pos.cY+=y;
+            if (_pos.bx==true && _pos.by == true) {
+              if ( (keccak256(abi.encodePacked('F')))==keccak256(abi.encodePacked(setting.index2path[tokenId][i]))) {
+                svgImage = abi.encodePacked(svgImage,' l ',Strings.toString(_pos.x),', ',Strings.toString(_pos.y));
+                _pos.cX+=_pos.x;
+                _pos.cY+=_pos.y;
+              } else if ( (keccak256(abi.encodePacked('f')))==keccak256(abi.encodePacked(setting.index2path[tokenId][i]))) {
+                svgImage = abi.encodePacked(svgImage,' m ',Strings.toString(_pos.x),', ',Strings.toString(_pos.y));
+                _pos.cX+=_pos.x;
+                _pos.cY+=_pos.y;
               }
-            } else if (bx==true && by == false) {
-              if ( (keccak256(abi.encodePacked('F')))==keccak256(abi.encodePacked(path[i]))) {
-                  svgImage = abi.encodePacked(svgImage,' l ',Strings.toString(x),', -',Strings.toString(y));
-                  _pos.cX+=x;
-                  _pos.cY-=y;
-                }  else if ( (keccak256(abi.encodePacked('f')))==keccak256(abi.encodePacked(path[i]))) {
-                  svgImage = abi.encodePacked(svgImage,' m ',Strings.toString(x),', -',Strings.toString(y));
-                  _pos.cX+=x;
-                  _pos.cY-=y;
+            } else if (_pos.bx==true && _pos.by == false) {
+              if ( (keccak256(abi.encodePacked('F')))==keccak256(abi.encodePacked(setting.index2path[tokenId][i]))) {
+                  svgImage = abi.encodePacked(svgImage,' l ',Strings.toString(_pos.x),', -',Strings.toString(_pos.y));
+                  _pos.cX+=_pos.x;
+                  _pos.cY-=_pos.y;
+                }  else if ( (keccak256(abi.encodePacked('f')))==keccak256(abi.encodePacked(setting.index2path[tokenId][i]))) {
+                  svgImage = abi.encodePacked(svgImage,' m ',Strings.toString(_pos.x),', -',Strings.toString(_pos.y));
+                  _pos.cX+=_pos.x;
+                  _pos.cY-=_pos.y;
                 }
-            } else if (bx==false && by == true) {
-              if ( (keccak256(abi.encodePacked('F')))==keccak256(abi.encodePacked(path[i]))) {
-                  svgImage = abi.encodePacked(svgImage,' l -',Strings.toString(x),', ',Strings.toString(y));
-                  _pos.cX-=x;
-                  _pos.cY+=y;
-                }  else if ( (keccak256(abi.encodePacked('f')))==keccak256(abi.encodePacked(path[i]))) {
-                  svgImage = abi.encodePacked(svgImage,' m -',Strings.toString(x),', ',Strings.toString(y));
-                  _pos.cX-=x;
-                  _pos.cY+=y;
+            } else if (_pos.bx==false && _pos.by == true) {
+              if ( (keccak256(abi.encodePacked('F')))==keccak256(abi.encodePacked(setting.index2path[tokenId][i]))) {
+                  svgImage = abi.encodePacked(svgImage,' l -',Strings.toString(_pos.x),', ',Strings.toString(_pos.y));
+                  _pos.cX-=_pos.x;
+                  _pos.cY+=_pos.y;
+                }  else if ( (keccak256(abi.encodePacked('f')))==keccak256(abi.encodePacked(setting.index2path[tokenId][i]))) {
+                  svgImage = abi.encodePacked(svgImage,' m -',Strings.toString(_pos.x),', ',Strings.toString(_pos.y));
+                  _pos.cX-=_pos.x;
+                  _pos.cY+=_pos.y;
                 }
             } else {
-              if ( (keccak256(abi.encodePacked('F')))==keccak256(abi.encodePacked(path[i]))) {
-                  svgImage = abi.encodePacked(svgImage,' l -',Strings.toString(x),', -',Strings.toString(y));
-                  _pos.cX-=x;
-                  _pos.cY-=y;
+              if ( (keccak256(abi.encodePacked('F')))==keccak256(abi.encodePacked(setting.index2path[tokenId][i]))) {
+                  svgImage = abi.encodePacked(svgImage,' l -',Strings.toString(_pos.x),', -',Strings.toString(_pos.y));
+                  _pos.cX-=_pos.x;
+                  _pos.cY-=_pos.y;
                 }
-                else if ( (keccak256(abi.encodePacked('f')))==keccak256(abi.encodePacked(path[i]))) {
-                 svgImage = abi.encodePacked(svgImage,' m -',Strings.toString(x),', -',Strings.toString(y));
-                 _pos.cX-=x;
-                 _pos.cY-=y;
+                else if ( (keccak256(abi.encodePacked('f')))==keccak256(abi.encodePacked(setting.index2path[tokenId][i]))) {
+                 svgImage = abi.encodePacked(svgImage,' m -',Strings.toString(_pos.x),', -',Strings.toString(_pos.y));
+                 _pos.cX-=_pos.x;
+                 _pos.cY-=_pos.y;
                }
             }
 
 
-        }
+
 
 
 
@@ -195,10 +194,7 @@ contract SVG is ERC721Tradable , CosSin {
           _pos.minY=_pos.cY;
         }
 
-          //svg = abi.encodePacked(svg,path[i]);
-        }
-
-
+}
 /*
         bytes memory svgBegin = '<svg viewBox="0 0 ';
         svgBegin = abi.encodePacked(svgBegin, Strings.toString(2000),' ',Strings.toString(2000),'" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="red"');
@@ -207,7 +203,7 @@ contract SVG is ERC721Tradable , CosSin {
 */
 
         bytes memory svgBegin = '<svg viewBox="0 0 ';
-        svgBegin = abi.encodePacked(svgBegin, Strings.toString(_pos.maxX-_pos.minX+100),' ',Strings.toString(_pos.maxY-_pos.minY+100),'" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="red"');
+        svgBegin = abi.encodePacked(svgBegin, Strings.toString(_pos.maxX-_pos.minX+100),' ',Strings.toString(_pos.maxY-_pos.minY+100),'" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="',setting.index2color[tokenId],'"');
 
         svgBegin = abi.encodePacked(svgBegin,' d="M ',Strings.toString((10000-_pos.minX+50)),',',Strings.toString((10000-_pos.minY+50)));
         svg = abi.encodePacked(svgBegin,svgImage,'" /></svg>');
