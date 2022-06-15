@@ -106,6 +106,11 @@ contract SVG is ERC721Tradable , CosSin {
             } else {
               by = true;
             }
+            if(bx == true) {
+              bx = false;
+            } else {
+              bx = true;
+            }
 
 
             // Do better rounding
