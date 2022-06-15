@@ -42,16 +42,26 @@ def data2svg(data):
 def main():
     me = accounts[0]
 
+    # CS = CosSin.deploy({'from': me})
+    # c = SVG.deploy(CS.address,{'from': me})
     c = SVG.deploy({'from': me})
-    c.mint()
+    c.mint("F+F-f+F+FF+F-F+Ff+FFf+F",157079632679)
+    c.mint("FFF-FF-F-F+F+FF-F-FFF",157079632679)
+    c.mint("F-F+F+FF-F-F+F-F-F+F+FF-F-F+F-F-F+F+FF-F-F+F-F-F+F+FF-F-F+F",157079632679)
+    c.mint("F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F++++F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F++++F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F",104719755119)
+
 
     # Render image, toggle color, then render image again
 
     #html = data2svg(c.tokenURI(1))
     #print(c.tokenURI(1))
-    c.toggle()
-    print(c.tokenURI(1))
-    html = data2svg(c.tokenURI(1))
+
+    print(c.tokenURI(0))
+    html = data2svg(c.tokenURI(0))
+    html += data2svg(c.tokenURI(1))
+    html += data2svg(c.tokenURI(2))
+    html += data2svg(c.tokenURI(3))
+
 
     # Print the SVGs
     print("\n\n")
