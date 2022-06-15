@@ -29,7 +29,7 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
@@ -132,11 +132,11 @@
 			]
 		},
 		"plants/nft/contracts/CosSin.sol": {
-			"keccak256": "0x351a29321b3e0c563834ac931a2e75673a08fa664fce0f10d30fdaf38b42766d",
+			"keccak256": "0x2f9f298581acb9b354f3cbca62e9c7cb0915e0b78f7b088401c20192dbaf3450",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://7144d2bd5b290104eeefde074aab7e8a2886b1f8643174812e6856f903c08268",
-				"dweb:/ipfs/QmXr7WX9p7p9JPU5Z5SjgTJ4yfEgSXonMGDuS7TdG5oeiW"
+				"bzz-raw://45df5cabd2da25d093b10045d1a8e59298d7836a36cc98dc46755d09c105ae98",
+				"dweb:/ipfs/QmWFLtedPReKSXL84LWQwNrjySw1fpEgDdepRNRX36fsPs"
 			]
 		},
 		"plants/nft/contracts/ERC721Tradable.sol": {
@@ -180,11 +180,11 @@
 			]
 		},
 		"plants/nft/contracts/svg.sol": {
-			"keccak256": "0xee1018c0d98eba0b19ac4f649866913f27f5b105488abf52562c2f8fc65a9a13",
+			"keccak256": "0x15b12e82eef776506f68a4bea11c152d9bf587d43209bfffc3de1d9ab332a3bc",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://b5ac6d7468cd5a2d5eab05ef4389a76e5f5c1f63d15f03543e1b476a10f3cb76",
-				"dweb:/ipfs/QmZrku5r5Shof5UBxyxB1G1nwQ4fQZrNzExGW2L3FVP13j"
+				"bzz-raw://ae2dc0521857a4e1b2e538bf6b8d61c32df08dee9b56a80b9467554712bb7ea2",
+				"dweb:/ipfs/QmP5547ma9fyyphCv1yDmsQ6ESi9Gog8KiZ44DsUZHEsoA"
 			]
 		}
 	},
