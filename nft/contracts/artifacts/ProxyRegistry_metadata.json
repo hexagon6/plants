@@ -150,11 +150,11 @@
 			]
 		},
 		"plants/nft/contracts/ERC721Tradable.sol": {
-			"keccak256": "0x008acea9efc4c8b1be1b3d0d99915f33b25772bd2ea8c74582bd05ce4a1c5572",
+			"keccak256": "0x44c196567ea7a39539f326c6c9c33064b7036326cf913c5140f83b37fcbabc71",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://d803b00ef765adccdc8a27364a5790efa91456f3983674e9556b508a10f1c1b6",
-				"dweb:/ipfs/QmQqpEiHkwqc1Y7UgS7yCa1dvwZmeHQd7XYpJePNjTpr4c"
+				"bzz-raw://7b212a668fa914f1ae4d3c4931232c14cae3928bd5f0e1954b7981bc7a1721f1",
+				"dweb:/ipfs/QmTBe3A6yj4BmnuwjM9DijNqmPNqnRxnRAMmHgpBZdWarc"
 			]
 		},
 		"plants/nft/contracts/common/meta-transactions/ContentMixin.sol": {

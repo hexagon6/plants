@@ -1,0 +1,94 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_radiant",
+						"type": "uint256"
+					}
+				],
+				"name": "cos",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "_sign",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_output",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_radiant",
+						"type": "uint256"
+					}
+				],
+				"name": "sin",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "_sign",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_output",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"plants/nft/contracts/CosSin.sol": "CosSin"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"plants/nft/contracts/CosSin.sol": {
+			"keccak256": "0x351a29321b3e0c563834ac931a2e75673a08fa664fce0f10d30fdaf38b42766d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7144d2bd5b290104eeefde074aab7e8a2886b1f8643174812e6856f903c08268",
+				"dweb:/ipfs/QmXr7WX9p7p9JPU5Z5SjgTJ4yfEgSXonMGDuS7TdG5oeiW"
+			]
+		}
+	},
+	"version": 1
+}
