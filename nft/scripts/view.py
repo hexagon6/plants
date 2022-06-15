@@ -45,10 +45,10 @@ def main():
     # CS = CosSin.deploy({'from': me})
     # c = SVG.deploy(CS.address,{'from': me})
     c = SVG.deploy({'from': me})
-    c.mint("F+F-f+F+FF+F-F+Ff+FFf+F",157079632679)
-    c.mint("FFF-FF-F-F+F+FF-F-FFF",157079632679)
-    c.mint("F-F+F+FF-F-F+F-F-F+F+FF-F-F+F-F-F+F+FF-F-F+F-F-F+F+FF-F-F+F",157079632679)
-    c.mint("F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F++++F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F++++F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F",104719755119)
+    c.mint("F+F-f+F+FF+F-F+Ff+FFf+F",90)
+    c.mint("FFF-FF-F-F+F+FF-F-FFF",90)
+    c.mint("F-F+F+FF-F-F+F-F-F+F+FF-F-F+F-F-F+F+FF-F-F+F-F-F+F+FF-F-F+F",90)
+    c.mint("F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F++++F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F++++F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F-F-F-F+F+F+F+F-F-F-F+F+F-F-F-F-F+F+F+F-F-F+F+F+F+F-F-F+F+F+F-F-F-F-F+F+F",60)
 
 
     # Render image, toggle color, then render image again
