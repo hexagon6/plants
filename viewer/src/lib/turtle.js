@@ -3,7 +3,7 @@ import { concat, filter, map, pipe as _, reduce, tap } from 'ramda'
 // const log = tap(console.log)
 export const canvasTurtle =
   ({ /** @type {canvas 2d context} */ c, /** @type {number} */ X, /** @type {number} */ Y }) =>
-  ({ /** @type {float} */ δ, /** @type {float} */ d, /** @type {boolean} */ doClear }) =>
+  ({ /** @type {number} */ δ, /** @type {number} */ d, /** @type {boolean} */ doClear }) =>
   (/** @type {string} */ input) => {
     if (!c) {
       return
@@ -77,7 +77,7 @@ export const canvasTurtle =
 
 export const svgTurtle =
   ({ /** @type {number} */ X, /** @type {number} */ Y }) =>
-  ({ /** @type {float} */ δ, /** @type {float} */ d, /** @type {boolean} */ doClear }) =>
+  ({ /** @type {number} */ δ, /** @type {number} */ d, /** @type {boolean} */ doClear }) =>
   (/** @type {string} */ input) => {
     const center = {
       X: X / 2,
