@@ -11,6 +11,7 @@
   // @ts-nocheck
   import { onMount } from 'svelte'
 
+  import SvgRenderer from '$lib/components/SVGRenderer.svelte'
   import { canvasTurtle as turtle, svgTurtle, allowedStrings } from '$lib/turtle.js'
   import { KochKurve, TurtleTest, Sierpinski } from '$lib/renderpaths.js'
 
@@ -46,21 +47,10 @@
     <canvas bind:this={canvas} {width} {height} />
   </div>
 
-  <div style="height: {height}px; width: {width}px;">
-    <legend>SVG Renderer: </legend>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="100%"
-      height="100%"
-      viewBox="0 0 {width} {height}"
-    >
-      <circle cx={width / 2} cy={height} r="2" fill="brown" />
-      <path
-        fill="transparent"
-        stroke="lightgreen"
-        d={svgTurtle({ X: canvas?.width, Y: canvas?.height })({ δ, d, doClear })(path)}
-      />
-    </svg>
+  <div>
+    <SvgRenderer {height} {width} delta={δ} distance={d} {path}>
+      <legend>SVG Renderer: </legend>
+    </SvgRenderer>
   </div>
 </article>
 
@@ -120,8 +110,7 @@
     margin: 1em;
   }
 
-  canvas,
-  svg {
+  canvas {
     background-color: rgb(42, 166, 238);
     box-shadow: 0.2em 0.2em 4em lightblue, -0.2em -0.2em 4em lightgreen;
     margin: 2em auto;
