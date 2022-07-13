@@ -1,8 +1,9 @@
-<div>
-  we want to render plants
-</div>
+<div>we want to render plants</div>
 
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation about svelte kit (this framework)</p>
+<p>
+  Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation about svelte kit
+  (this framework)
+</p>
 
 <style>
   p {

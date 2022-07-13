@@ -1,53 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-		<link href="https://fonts.googleapis.com/css?family=Gelasio" rel="stylesheet" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<style type="text/css">
-			:root {
-				--main-color: #7bb41f;
-				--alternate: #e6dd21;
-				--bright: #dee487;
-				--medium: #398b30;
-				--dark: #19711a;
-				--black: #04240b;
-			}
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%sveltekit.assets%/favicon.png" />
+    <link href="https://fonts.googleapis.com/css?family=Gelasio" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+      :root {
+        --main-color: #7bb41f;
+        --alternate: #e6dd21;
+        --bright: #dee487;
+        --medium: #398b30;
+        --dark: #19711a;
+        --black: #04240b;
+      }
 
-			@font-face {
-				font-family: 'Libre';
-				font-style: normal;
-				font-weight: 400;
-				src: url(/fonts/libre-baskerville-latin-400.woff2) format('woff2');
-			}
+      @font-face {
+        font-family: 'Libre';
+        font-style: normal;
+        font-weight: 400;
+        src: url(/fonts/libre-baskerville-latin-400.woff2) format('woff2');
+      }
 
-			html {
-				background: var(--bright);
-			}
-			body {
-				font-family: Libre;
-				margin: 0;
-				padding: 1em auto;
-				color: var(--dark);
-			}
-			a {
-				color: var(--black);
-				border-radius: 0.5em;
-				text-decoration: none;
-				padding: 0.5em;
-				margin: 0 auto;
-			}
-			a:hover {
-				border: 1px solid var(--alternate);
-				color: var(--alternate);
-				background: var(--dark);
-				border: 2em;
-			}
-		</style>
-		%sveltekit.head%
-	</head>
-	<body>
-		<div>%sveltekit.body%</div>
-	</body>
+      html {
+        background: var(--bright);
+      }
+      body {
+        font-family: Libre;
+        margin: 0;
+        padding: 1em auto;
+        color: var(--dark);
+      }
+      a {
+        color: var(--black);
+        border-radius: 0.5em;
+        text-decoration: none;
+        padding: 0.5em;
+        margin: 0 auto;
+      }
+      a:hover {
+        border: 1px solid var(--alternate);
+        color: var(--alternate);
+        background: var(--dark);
+        border: 2em;
+      }
+    </style>
+    %sveltekit.head%
+  </head>
+  <body>
+    <div>%sveltekit.body%</div>
+  </body>
 </html>
