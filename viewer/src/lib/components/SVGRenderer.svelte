@@ -18,10 +18,6 @@
    */
   let distance
   export /**
-   * @type {boolean}
-   */
-  let doClear = true
-  export /**
    * @type {string}
    */
   let path
@@ -34,7 +30,7 @@
     <path
       fill="transparent"
       stroke="lightgreen"
-      d={svgTurtle({ X: width, Y: height })({ δ: delta, d: distance, doClear })(path)}
+      d={svgTurtle({ X: width, Y: height })({ δ: delta, d: distance })(path)}
     />
   </svg>
 </div>
