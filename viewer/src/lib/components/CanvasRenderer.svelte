@@ -10,7 +10,7 @@
    * @type {string | number}
    */
   let width
-  export /**
+  /**
    * @type {HTMLCanvasElement}
    */
   let canvas

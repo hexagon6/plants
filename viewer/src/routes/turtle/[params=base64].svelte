@@ -1,6 +1,7 @@
 <script context="module">
   import { Buffer } from 'buffer'
-  const fromBase64JSON = b => (b ? JSON.parse(Buffer.from(b, 'base64')) : {})
+  const fromBase64JSON = (/** @type string */ b) =>
+    b ? JSON.parse(Buffer.from(b, 'base64').toString()) : {}
   export async function load({ params: { params } }) {
     const { delta, distance, path } = fromBase64JSON(params)
     return { props: { delta, distance, path } }
@@ -8,13 +9,13 @@
 </script>
 
 <script>
-  // @ts-nocheck
   import SvgRenderer from '$lib/components/SVGRenderer.svelte'
   import CanvasRenderer from '$lib/components/CanvasRenderer.svelte'
   import { allowedStrings } from '$lib/turtle.js'
   import { KochKurve, TurtleTest, Sierpinski } from '$lib/renderpaths.js'
 
-  const toBase64JSON = o => Buffer.from(JSON.stringify(o)).toString('base64')
+  const toBase64JSON = (/** @type {{ path: string; delta: number; distance: number; }} */ o) =>
+    Buffer.from(JSON.stringify(o)).toString('base64')
 
   // [[SL,SR,SL].join('-'), [SR,SL,SR].join('+'), [SL,SR,SL].join('-')].join('-')
   let width = 400
@@ -37,7 +38,7 @@
 <article>
   <div style="margin: 4em;">
     {#if renderMode == 'canvas'}
-      <CanvasRenderer {height} {width} delta={δ} distance={d} {path} />
+      <CanvasRenderer {height} {width} delta={δ} distance={d} {path} {doClear} />
     {:else if renderMode == 'svg'}
       <SvgRenderer {height} {width} delta={δ} distance={d} {path} />
     {/if}

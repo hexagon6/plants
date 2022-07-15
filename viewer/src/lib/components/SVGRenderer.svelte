@@ -10,7 +10,7 @@
    */
   let height
   export /**
-   * @type {{ width: number; height: number; }}
+   * @type {number}
    */
   let delta
   export /**
