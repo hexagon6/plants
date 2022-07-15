@@ -78,7 +78,7 @@
   <li>
     <label>
       clear canvas before drawing
-      <input bind:value={doClear} type="checkbox" />
+      <input bind:checked={doClear} type="checkbox" />
     </label>
   </li>
   <lh>Rendering Mode</lh>
