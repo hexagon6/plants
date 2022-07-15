@@ -18,8 +18,8 @@
     Buffer.from(JSON.stringify(o)).toString('base64')
 
   // [[SL,SR,SL].join('-'), [SR,SL,SR].join('+'), [SL,SR,SL].join('-')].join('-')
-  let width = 400
-  let height = 400
+  let width = 1200
+  let height = width
   $: renderMode = 'canvas'
 
   export let path = 'F-F+F+FF-F-F+F'
