@@ -46,7 +46,7 @@
 
 <ul>
   <li>
-    actions:
+    action symbols:
     <code>
       {allowedStrings}
     </code>
@@ -54,17 +54,25 @@
   <li>
     <label
       >turtle path
-      <input bind:value={path} type="textarea" width="100%" />
+      <textarea bind:value={path} />
+      <!-- style={`height: ${Math.max(path.length / 100, 100)}px; word-wrap: wrap;`} -->
+      <span style="color: grey; margin: 0.5em;">
+        {path.length} symbols
+      </span>
     </label>
   </li>
   <lh>turtle parameters</lh>
   <li>
-    <input bind:value={δ} type="range" min="0" max="359" />
-    δ: {δ}
+    <label>
+      δ: {δ}
+      <input bind:value={δ} type="range" min="0" max="359" />
+    </label>
   </li>
   <li>
-    <input bind:value={d} type="range" min="1" max="50" />
-    d: {d}
+    <label>
+      d: {d}
+      <input bind:value={d} type="range" min="1" max="50" />
+    </label>
   </li>
   <li>
     <label>
@@ -110,7 +118,7 @@
 	} */
   article {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
   }
 
@@ -118,15 +126,31 @@
     margin: 1em;
   }
 
-  canvas {
-    background-color: rgb(42, 166, 238);
-    box-shadow: 0.2em 0.2em 4em lightblue, -0.2em -0.2em 4em lightgreen;
-    margin: 2em auto;
-    padding: 0;
+  label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em auto;
+    padding: 0.5em;
+    width: 100%;
+    border-radius: 0.5em;
+  }
+
+  label:hover {
+    box-shadow: 0 0 2em rgba(1, 1, 1, 0.2);
   }
 
   ul {
     list-style: none;
     margin: 2em auto;
+  }
+
+  li {
+    margin: 0.2em 0;
+  }
+
+  textarea {
+    width: 100%;
+    height: 200px;
   }
 </style>

@@ -43,7 +43,6 @@
   svg {
     background-color: rgb(42, 166, 238);
     box-shadow: 0.2em 0.2em 4em lightblue, -0.2em -0.2em 4em lightgreen;
-    margin: 2em auto;
     padding: 0;
   }
 </style>
