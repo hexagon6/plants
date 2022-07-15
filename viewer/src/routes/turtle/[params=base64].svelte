@@ -9,10 +9,9 @@
 
 <script>
   // @ts-nocheck
-  import { onMount } from 'svelte'
-
   import SvgRenderer from '$lib/components/SVGRenderer.svelte'
-  import { canvasTurtle as turtle, svgTurtle, allowedStrings } from '$lib/turtle.js'
+  import CanvasRenderer from '$lib/components/CanvasRenderer.svelte'
+  import { allowedStrings } from '$lib/turtle.js'
   import { KochKurve, TurtleTest, Sierpinski } from '$lib/renderpaths.js'
 
   const toBase64JSON = o => Buffer.from(JSON.stringify(o)).toString('base64')
@@ -20,8 +19,8 @@
   // [[SL,SR,SL].join('-'), [SR,SL,SR].join('+'), [SL,SR,SL].join('-')].join('-')
   let width = 400
   let height = 400
-  let canvas
-  let c
+  $: renderMode = 'canvas'
+
   export let path = 'F-F+F+FF-F-F+F'
   export let delta = 90
   export let distance = 20
@@ -29,12 +28,6 @@
   $: δ = delta
   $: d = distance
   $: doClear = true
-
-  onMount(async () => {
-    c = canvas.getContext('2d')
-  })
-
-  $: turtle({ c, X: canvas?.width, Y: canvas?.height })({ δ, d, doClear })(path)
 </script>
 
 <svelte:head>
@@ -42,15 +35,12 @@
 </svelte:head>
 
 <article>
-  <div>
-    <legend>Canvas Renderer: </legend>
-    <canvas bind:this={canvas} {width} {height} />
-  </div>
-
-  <div>
-    <SvgRenderer {height} {width} delta={δ} distance={d} {path}>
-      <legend>SVG Renderer: </legend>
-    </SvgRenderer>
+  <div style="margin: 4em;">
+    {#if renderMode == 'canvas'}
+      <CanvasRenderer {height} {width} delta={δ} distance={d} {path} />
+    {:else if renderMode == 'svg'}
+      <SvgRenderer {height} {width} delta={δ} distance={d} {path} />
+    {/if}
   </div>
 </article>
 
@@ -80,6 +70,24 @@
     <label>
       clear canvas before drawing
       <input bind:value={doClear} type="checkbox" />
+    </label>
+  </li>
+  <lh>Rendering Mode</lh>
+  <li>
+    <label>
+      <button
+        style={`color: ${renderMode != 'canvas' ? 'grey' : 'inherit'}`}
+        on:click={() => {
+          renderMode = 'canvas'
+        }}>Canvas</button
+      >
+      /
+      <button
+        style={`color: ${renderMode != 'svg' ? 'grey' : 'inherit'}`}
+        on:click={() => {
+          renderMode = 'svg'
+        }}>SVG</button
+      >
     </label>
   </li>
 </ul>
