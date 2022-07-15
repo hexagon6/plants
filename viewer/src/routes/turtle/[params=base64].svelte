@@ -68,19 +68,12 @@
       δ: {δ}
       <input bind:value={δ} type="range" min="0" max="359" />
     </label>
-  </li>
-  <li>
     <label>
       d: {d}
       <input bind:value={d} type="range" min="1" max="50" />
     </label>
   </li>
-  <li>
-    <label>
-      clear canvas before drawing
-      <input bind:checked={doClear} type="checkbox" />
-    </label>
-  </li>
+
   <lh>Rendering Mode</lh>
   <li>
     <label>
@@ -98,6 +91,12 @@
         }}>SVG</button
       >
     </label>
+    {#if renderMode === 'canvas'}
+      <label>
+        clear canvas before drawing
+        <input bind:checked={doClear} type="checkbox" />
+      </label>
+    {/if}
   </li>
 </ul>
 <div>
