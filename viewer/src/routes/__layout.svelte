@@ -12,7 +12,9 @@
   style="display: flex; flex-flow: column; margin: 0 auto;
     background: var(--bright)"
 >
-  <div>
+  <div
+    style="width: 92vw; display: flex; flex-flow: column; justify-content: center; align-items: center;"
+  >
     <slot />
   </div>
 </main>
