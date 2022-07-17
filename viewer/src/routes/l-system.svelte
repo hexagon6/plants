@@ -17,7 +17,7 @@
   })
 
   const change = value => {
-    iterations += value
+    iterations = parseInt(iterations, 10) + value
     console.log({ value })
     if (iterations > lsystems.length) {
       iterate()
