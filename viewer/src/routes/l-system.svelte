@@ -1,6 +1,6 @@
 <script>
   // @ts-nocheck
-  import { onMount } from 'svelte'
+  import { Buffer } from 'buffer'
   import LSystem from 'lindenmayer'
   import { branchA, branchB, branchC, branchD, koch } from '$lib/l-systems.js'
 
@@ -8,33 +8,38 @@
   let lsystem = ''
 
   $: id = 0
-  $: iterations = 1
+  $: iterations = examples[id].n ?? 1
   $: axiom = examples[id].axiom
   $: productions = examples[id].productions
   $: degree = examples[id].degree ?? 90
 
-  $: lsystem = new LSystem({
-    axiom,
-    productions,
-  })
+  $: {
+    lsystem = new LSystem({
+      axiom,
+      productions,
+    })
+    console.log(iterations)
+    lsystem.iterate(iterations)
+  }
 
   const change = value => {
-    iterations = parseInt(iterations, 10) + value
-    console.log({ value })
-    if (iterations > lsystems.length) {
-      iterate()
-    }
+    const newValue = parseInt(iterations, 10) + value
+    iterations = newValue > 0 ? newValue : 1
   }
 
-  let lsystems = []
+  const toBase64JSON = (
+    /** @type {{ path: string; degree: number; distance: number; lsystem: {
+    axiom: string; productions: object; n: number;
+  } }} */ o,
+  ) => Buffer.from(JSON.stringify(o)).toString('base64')
 
-  const iterate = () => {
-    const l = lsystem.iterate()
-    lsystems = [...lsystems, l]
-  }
-
-  onMount(() => {
-    iterate()
+  $: link = toBase64JSON({
+    degree,
+    lsystem: {
+      axiom,
+      productions,
+      n: iterations,
+    },
   })
 </script>
 
@@ -54,9 +59,9 @@
     {#each Object.entries(productions) as [k, production]}
       <li>
         <label for={`key_${k}`}>{k}</label>
-        <input id={`key_${k}`} value={production()} />
+        <input id={`key_${k}`} value={production} />
         <span style="color: grey; margin: 0.5em;">
-          {production().length} symbols
+          {production.length} symbols
         </span>
       </li>
     {/each}
@@ -65,18 +70,19 @@
 <div style="display: flex; flex-direction: row;">
   <label for="iterations">iterations</label>
   <input id="iterations" bind:value={iterations} />
-  <button on:click={() => change(-1)}>-</button>
-  <button on:click={() => change(1)}>+</button>
+  <button disabled={iterations == 1 && 'disabled'} on:click={() => change(-1)}>-</button>
+  <button disabled={lsystem?.getString().length >= 400000} on:click={() => change(1)}>+</button>
 </div>
 <div style="display: flex; flex-direction: column;">
-  {#each lsystems as l, i}
-    <span>{i + 1}. iteration</span>
-    <textarea style={`height: ${Math.ceil(l.length / 120)}em`}>{l}</textarea>
+  <div style="display: flex; flex-direction: row; justify-content: space-between;">
+    <span>{iterations}. iteration</span>
+    <a href={`turtle/${link}`}>Render</a>
     <span style="color: grey; margin: 0.5em;">
-      {l.length} symbols
+      {lsystem?.getString().length} symbols
     </span>
-    <br />
-  {/each}
+  </div>
+  <textarea style={`height: ${Math.ceil(lsystem?.length / 100)}em`}>{lsystem.getString()}</textarea>
+  <br />
 </div>
 
 <style>

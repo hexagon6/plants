@@ -2,20 +2,39 @@
   import { Buffer } from 'buffer'
   const fromBase64JSON = (/** @type string */ b) =>
     b ? JSON.parse(Buffer.from(b, 'base64').toString()) : {}
+  // @ts-ignore
   export async function load({ params: { params } }) {
-    const { delta, distance, path } = fromBase64JSON(params)
-    return { props: { delta, distance, path } }
+    const { degree, distance, path, lsystem } = fromBase64JSON(params)
+    const { n, axiom, productions } = lsystem || {}
+    const newPath = () => {
+      if (!path) {
+        // @ts-ignore
+        const _lsystem = new LSystem({
+          axiom,
+          productions,
+        })
+        _lsystem.iterate(n)
+        return _lsystem.getString()
+      } else {
+        return path
+      }
+    }
+    return { props: { degree, distance, path: newPath() } }
   }
 </script>
 
 <script>
+  import LSystem from 'lindenmayer'
   import SvgRenderer from '$lib/components/SVGRenderer.svelte'
   import CanvasRenderer from '$lib/components/CanvasRenderer.svelte'
   import { allowedStrings } from '$lib/turtle.js'
   import { KochKurve, TurtleTest, Sierpinski } from '$lib/renderpaths.js'
 
-  const toBase64JSON = (/** @type {{ path: string; delta: number; distance: number; }} */ o) =>
-    Buffer.from(JSON.stringify(o)).toString('base64')
+  const toBase64JSON = (
+    /** @type {{ path?: string; degree: number; distance: number; lsystem?: {
+    axiom: string; productions: object; n: number;
+  } }} */ o,
+  ) => Buffer.from(JSON.stringify(o)).toString('base64')
 
   // [[SL,SR,SL].join('-'), [SR,SL,SR].join('+'), [SL,SR,SL].join('-')].join('-')
   let width = 1200
