@@ -12,7 +12,7 @@
   export /**
    * @type {number}
    */
-  let delta
+  let degree
   export /**
    * @type {number}
    */
@@ -30,7 +30,7 @@
     <path
       fill="transparent"
       stroke="lightgreen"
-      d={svgTurtle({ X: width, Y: height })({ δ: delta, d: distance })(path)}
+      d={svgTurtle({ X: width, Y: height })({ δ: degree, d: distance })(path)}
     />
   </svg>
 </div>

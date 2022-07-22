@@ -23,10 +23,10 @@
   $: renderMode = 'canvas'
 
   export let path = 'F-F+F+FF-F-F+F'
-  export let delta = 90
+  export let degree = 90
   export let distance = 20
 
-  $: δ = delta
+  $: δ = degree
   $: d = distance
   $: doClear = true
 </script>
@@ -38,9 +38,9 @@
 <article>
   <div style="margin: 4em;">
     {#if renderMode == 'canvas'}
-      <CanvasRenderer {height} {width} delta={δ} distance={d} {path} {doClear} />
+      <CanvasRenderer {height} {width} degree={δ} distance={d} {path} {doClear} />
     {:else if renderMode == 'svg'}
-      <SvgRenderer {height} {width} delta={δ} distance={d} {path} />
+      <SvgRenderer {height} {width} degree={δ} distance={d} {path} />
     {/if}
   </div>
 </article>
@@ -101,13 +101,14 @@
 </ul>
 <div>
   current settings:
-  <a href="/turtle/{toBase64JSON({ path, delta: δ, distance: d })}">Share this link</a>
+  <a href="/turtle/{toBase64JSON({ path, degree: δ, distance: d })}">Share this link</a>
 </div>
 <div>
   presets:
-  <a href="/turtle/{toBase64JSON({ path: TurtleTest, delta: 90, distance: 20 })}">Turtle Test</a>
-  <a href="/turtle/{toBase64JSON({ path: KochKurve, delta: 90, distance: 10 })}">Koch Kurve n=1</a>
-  <a href="/turtle/{toBase64JSON({ path: Sierpinski, delta: 60, distance: 6 })}">wrong Sierpinski</a
+  <a href="/turtle/{toBase64JSON({ path: TurtleTest, degree: 90, distance: 20 })}">Turtle Test</a>
+  <a href="/turtle/{toBase64JSON({ path: KochKurve, degree: 90, distance: 10 })}">Koch Kurve n=1</a>
+  <a href="/turtle/{toBase64JSON({ path: Sierpinski, degree: 60, distance: 6 })}"
+    >wrong Sierpinski</a
   >
 </div>
 

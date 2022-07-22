@@ -10,6 +10,7 @@
   $: iterations = 1
   $: axiom = examples[id].axiom
   $: productions = examples[id].productions
+  $: degree = examples[id].degree ?? 90
 
   $: lsystem = new LSystem({
     axiom,

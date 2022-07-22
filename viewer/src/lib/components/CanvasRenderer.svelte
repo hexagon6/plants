@@ -21,7 +21,7 @@
   export /**
    * @type {number}
    */
-  let delta
+  let degree
   export /**
    * @type {number}
    */
@@ -39,7 +39,7 @@
   onMount(async () => {
     c = canvas.getContext('2d')
   })
-  $: turtle({ c, X: canvas?.width, Y: canvas?.height })({ δ: delta, d: distance, doClear })(path)
+  $: turtle({ c, X: canvas?.width, Y: canvas?.height })({ δ: degree, d: distance, doClear })(path)
 </script>
 
 <div style="height: {height}px; width: {width}px;">
