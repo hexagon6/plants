@@ -2,9 +2,10 @@
   // @ts-nocheck
   import { onMount } from 'svelte'
   import LSystem from 'lindenmayer'
-  import { tree1, koch } from '$lib/l-systems.js'
+  import { branchA, branchB, branchC, branchD, koch } from '$lib/l-systems.js'
 
-  const examples = [tree1, koch]
+  const examples = [koch, branchA, branchB, branchC, branchD]
+  let lsystem = ''
 
   $: id = 0
   $: iterations = 1
