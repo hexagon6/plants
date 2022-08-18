@@ -1,30 +1,5 @@
-<script context="module">
-  import { Buffer } from 'buffer'
-  const fromBase64JSON = (/** @type string */ b) =>
-    b ? JSON.parse(Buffer.from(b, 'base64').toString()) : {}
-  // @ts-ignore
-  export async function load({ params: { params } }) {
-    const { degree, distance, path, lsystem } = fromBase64JSON(params)
-    const { n, axiom, productions } = lsystem || {}
-    const newPath = () => {
-      if (!path) {
-        // @ts-ignore
-        const _lsystem = new LSystem({
-          axiom,
-          productions,
-        })
-        _lsystem.iterate(n)
-        return _lsystem.getString()
-      } else {
-        return path
-      }
-    }
-    return { props: { degree, distance, path: newPath() } }
-  }
-</script>
-
 <script>
-  import LSystem from 'lindenmayer'
+  import { Buffer } from 'buffer'
   import SvgRenderer from '$lib/components/SVGRenderer.svelte'
   import CanvasRenderer from '$lib/components/CanvasRenderer.svelte'
   import { allowedStrings } from '$lib/turtle.js'
@@ -41,12 +16,17 @@
   let height = width
   $: renderMode = 'canvas'
 
-  export let path = 'F-F+F+FF-F-F+F'
-  export let degree = 90
-  export let distance = 20
+  /** @type {import('./$types').PageData} */
+  export let data
 
-  $: δ = degree
-  $: d = distance
+  $: ({ degree, distance, path } = data || {
+    degree: 90,
+    distance: 20,
+    path: 'F-F+F+FF-F-F+F',
+  })
+
+  $: δ = degree ?? 90
+  $: d = distance ?? 15
   $: doClear = true
 </script>
 
