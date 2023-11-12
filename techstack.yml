@@ -1,0 +1,147 @@
+repo_name: hexagon6/plants
+report_id: a14661009f2bd498a4d490098a7cc8e9
+repo_type: Public
+timestamp: '2023-11-12T18:13:11+00:00'
+requested_by: hexagon6
+provider: github
+branch: main
+detected_tools_count: 11
+tools:
+- name: JavaScript
+  description: Lightweight, interpreted, object-oriented language with first-class
+    functions
+  website_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source: Repo Metadata
+- name: TypeScript
+  description: A superset of JavaScript that compiles to clean JavaScript output
+  website_url: http://www.typescriptlang.org
+  version: 4.8.3
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1612/bynNY5dJ.jpg
+  detection_source_url: viewer/package-lock.json
+  detection_source: viewer/package.json
+  last_updated_by: Hexagon Six
+  last_updated_on: 2022-09-16 19:39:42.000000000 Z
+- name: Svelte
+  description: A UI framework that compiles into tiny standalone JavaScript modules
+  website_url: https://svelte.technology/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript UI Libraries
+  image_url: https://img.stackshare.io/service/6113/7exmJEg4_400x400.png
+  detection_source: viewer/package.json
+  last_updated_by: Hexagon Six
+  last_updated_on: 2022-09-16 19:39:42.000000000 Z
+- name: ESLint
+  description: The fully pluggable JavaScript code quality tool
+  website_url: http://eslint.org/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Code Review
+  image_url: https://img.stackshare.io/service/3337/Q4L7Jncy.jpg
+  detection_source: viewer/package.json
+  last_updated_by: Hexagon Six
+  last_updated_on: 2022-06-01 13:45:04.000000000 Z
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source: Repo Metadata
+- name: Prettier
+  description: 'Prettier is an opinionated code formatter. '
+  website_url: https://prettier.io/
+  version: 2.7.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Code Review
+  image_url: https://img.stackshare.io/service/7035/default_66f265943abed56bcdbfca1c866a4261b1fbb063.jpg
+  detection_source_url: viewer/package-lock.json
+  detection_source: viewer/package.json
+  last_updated_by: Hexagon Six
+  last_updated_on: 2022-07-13 09:52:34.000000000 Z
+- name: npm
+  description: The package manager for JavaScript.
+  website_url: https://www.npmjs.com/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source: viewer/package.json
+  last_updated_by: Hexagon Six
+  last_updated_on: 2022-06-01 13:45:04.000000000 Z
+- name: Ramda
+  description: A practical functional library for JavaScript programmers
+  website_url: https://ramdajs.com/
+  version: 0.28.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript Utilities & Libraries
+  image_url: https://img.stackshare.io/service/3076/Ramda-01.png
+  detection_source_url: viewer/package-lock.json
+  detection_source: viewer/package.json
+  last_updated_by: Hexagon Six
+  last_updated_on: 2022-07-15 15:41:42.000000000 Z
+- name: "@types/ramda"
+  description: TypeScript definitions for ramda
+  package_url: https://www.npmjs.com/@types/ramda
+  version: 0.28.15
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16750/default_848dc5bc612658cea8d631cff0259d9588c28fea.png
+  detection_source_url: viewer/package-lock.json
+  detection_source: viewer/package.json
+  last_updated_by: Hexagon Six
+  last_updated_on: 2022-09-16 19:39:42.000000000 Z
+- name: buffer
+  description: Node.js Buffer API, for the browser
+  package_url: https://www.npmjs.com/buffer
+  version: 6.0.3
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16609/default_e654289254bcb9b55e3dca992739e962dc0c7297.png
+  detection_source_url: viewer/package-lock.json
+  detection_source: viewer/package.json
+  last_updated_by: Hexagon Six
+  last_updated_on: 2022-07-13 09:52:34.000000000 Z
+- name: eslint-config-prettier
+  description: Turns off all rules that are unnecessary or might conflict with Prettier
+  package_url: https://www.npmjs.com/eslint-config-prettier
+  version: 8.5.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15879/default_0b10af8ca19c215f781dc07442e75bdc831089d0.png
+  detection_source_url: viewer/package-lock.json
+  detection_source: viewer/package.json
+  last_updated_by: Hexagon Six
+  last_updated_on: 2022-09-16 19:39:42.000000000 Z
