@@ -29,6 +29,8 @@
   "dependencies": {
     "@openfonts/libre-baskerville_latin": "^1.44.2",
     "buffer": "^6.0.3",
+    "eslint": "^8.57.0",
+    "eslint-plugin-svelte": "^2.35.1",
     "lindenmayer": "^1.5.4",
     "ramda": "^0.28.0"
   }
