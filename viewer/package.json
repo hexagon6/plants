@@ -9,8 +9,8 @@
     "check": "svelte-check --tsconfig ./jsconfig.json",
     "check:watch": "svelte-check --tsconfig ./jsconfig.json --watch",
     "test": "playwright test",
-    "lint": "prettier --check --plugin-search-dir=. . && eslint .",
-    "format": "prettier --write --plugin-search-dir=. ."
+    "lint": "prettier --check . && eslint .",
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "@playwright/test": "^1.21.0",
@@ -18,9 +18,9 @@
     "@sveltejs/kit": "^2.0.0",
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
     "@types/ramda": "^0.29.11",
-    "eslint-config-prettier": "^8.3.0",
-    "prettier": "^2.5.1",
-    "prettier-plugin-svelte": "^2.10.1",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.5",
+    "prettier-plugin-svelte": "^3.2.2",
     "svelte": "^4.0.0",
     "svelte-check": "^3.4.3",
     "typescript": "^5.0.0"
