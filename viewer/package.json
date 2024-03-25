@@ -17,7 +17,7 @@
     "@sveltejs/adapter-auto": "^3.1.1",
     "@sveltejs/kit": "^2.0.0",
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
-    "@types/ramda": "^0.28.15",
+    "@types/ramda": "^0.29.11",
     "eslint-config-prettier": "^8.3.0",
     "prettier": "^2.5.1",
     "prettier-plugin-svelte": "^2.10.1",
@@ -32,6 +32,6 @@
     "eslint": "^8.57.0",
     "eslint-plugin-svelte": "^2.35.1",
     "lindenmayer": "^1.5.4",
-    "ramda": "^0.28.0"
+    "ramda": "^0.29.1"
   }
 }
