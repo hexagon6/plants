@@ -1,8 +1,6 @@
-import { Buffer } from 'buffer'
 import LSystem from 'lindenmayer'
+import { fromBase64JSON } from '$lib/encoding.js'
 
-const fromBase64JSON = (/** @type string */ b) =>
-  b ? JSON.parse(Buffer.from(b, 'base64').toString()) : {}
 export function load({ params: { params } }) {
   const { degree, distance, path, lsystem } = fromBase64JSON(params)
   const { n, axiom, productions } = lsystem || {}

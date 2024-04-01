@@ -1,15 +1,9 @@
 <script>
-  import { Buffer } from 'buffer'
   import SvgRenderer from '$lib/components/SVGRenderer.svelte'
   import CanvasRenderer from '$lib/components/CanvasRenderer.svelte'
+  import { toBase64JSON } from '$lib/encoding.js'
   import { allowedStrings } from '$lib/turtle.js'
   import { KochKurve, TurtleTest, Sierpinski } from '$lib/renderpaths.js'
-
-  const toBase64JSON = (
-    /** @type {{ path?: string; degree: number; distance: number; lsystem?: {
-    axiom: string; productions: object; n: number;
-  } }} */ o,
-  ) => Buffer.from(JSON.stringify(o)).toString('base64')
 
   // [[SL,SR,SL].join('-'), [SR,SL,SR].join('+'), [SL,SR,SL].join('-')].join('-')
   let width = 1200

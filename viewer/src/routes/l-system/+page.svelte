@@ -1,8 +1,8 @@
 <script>
   // @ts-nocheck
-  import { Buffer } from 'buffer'
   import LSystem from 'lindenmayer'
   import { branchA, branchB, branchC, branchD, koch } from '$lib/l-systems.js'
+  import { toBase64JSON } from '$lib/encoding.js'
 
   const examples = [koch, branchA, branchB, branchC, branchD]
   let lsystem = ''
@@ -26,12 +26,6 @@
     const newValue = parseInt(iterations, 10) + value
     iterations = newValue > 0 ? newValue : 1
   }
-
-  const toBase64JSON = (
-    /** @type {{ path: string; degree: number; distance: number; lsystem: {
-    axiom: string; productions: object; n: number;
-  } }} */ o,
-  ) => Buffer.from(JSON.stringify(o)).toString('base64')
 
   $: link = toBase64JSON({
     degree,
